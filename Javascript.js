@@ -13,7 +13,7 @@ const productGrid = document.getElementById("product-grid");
                     <h5 class="card-title">${product.title}</h5>
                     <p class="card-text">${product.description}</p>
                     <p class="card-text fw-bold">$${product.price}</p>
-                    <a href="Purchase.html" class="btn btn-success" >BUY</a>
+                    <a href="purchase.html" class="btn btn-success" >BUY</a>
                   </div>
                 </div>
               `;
@@ -37,6 +37,7 @@ buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {even
                         &price=${encodeURIComponent(price)}`;
     const url = `purchase.html?${queryString}`;
     window.location.href = url;
+    console.log(queryString)
     });
 })
         
