@@ -16,11 +16,40 @@
         </div>
 
         <div>
-            <label for="product-description">Title</label>
-            <input type="product-description" id = "product-description" name ="product-description" row="3" readonly>
+            <label for="product-description">Product description</label>
+            <textarea id = "product-description" name ="product-description" rows="3" readonly></textarea>
         </div>
+
+        <div>
+            <label for="product-price">Price:</label>
+            <input type="text" id = "product-price" name ="product-price" readonly>
+        </div>
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id = "name" name ="name" required>
+        </div>
+
+        <div>
+            <label for="address">Adress:</label>
+            <textarea id = "address" name ="address" rows ="3" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
     </form>
 
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productTitle = urlParams.get('title');
+        const productDescription = urlParams.get('description');
+        const productPrice = urlParams.get('price');
+
+        document.getElementById("product-title").value = productTitle;
+        document.getElementById("product-description").value = productDescription;
+        document.getElementById("product-price").value = productPrice;
+
+        
+    </script>
     
 </body>
 </html>
