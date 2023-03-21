@@ -13,6 +13,7 @@ const productGrid = document.getElementById("product-grid");
                     <h5 class="card-title">${product.title}</h5>
                     <p class="card-text">${product.description}</p>
                     <p class="card-text fw-bold">$${product.price}</p>
+                    <a href="#" class="btn btn-success">Köp</a>
                   </div>
                 </div>
               `;
