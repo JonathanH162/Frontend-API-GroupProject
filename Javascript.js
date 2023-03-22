@@ -35,7 +35,7 @@ const productGrid = document.getElementById("product-grid");
                         &price=${encodeURIComponent(price)}
                         &image=${encodeURIComponent(image)}`;
                 //skapa en URL med query stringen
-                const url = `purchase.html?${queryString}`;
+                const url = `order.html?${queryString}`;
                 //öppna nya sida med window.location.href
                 window.location.href = url;
     

@@ -11,6 +11,26 @@
 <body>
     <h1 class="text-center">Skapa order</h1>
 
+    <div class="container">
+
+      <div class="row justify-content-center align-items-center" style="height:100vh">
+        <!--productimage-->
+        <div class="col-md-6">
+
+          <img id ="product-image" src="#" alt="Product image" class="img-fluid mb-3" style="width: 70%;">
+
+        </div>
+        <!--productinfo-->
+        <div class="col-md-6">
+          <h2 class="mb-3" id="product-title"></h2>
+          <p class="mb-3" id="product-description"></p>
+          <h3 class="mb-3" id="product-price"></h3>
+        </div>
+    
+      </div>
+
+    </div>
+    
     <form action="#" id="contact-form">
         <!-- namn input -->
         <div class="mb-3 px-3"> 
@@ -56,6 +76,21 @@
   
         </div>
     </form>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const productTitle = urlParams.get('title');
+      const productDescription = urlParams.get('description');
+      const productPrice = urlParams.get('price');
+      const productImage = urlParams.get('image')
+
+      document.getElementById("product-title").innerHTML = productTitle;
+      document.getElementById("product-description").innerHTML = productDescription;
+      document.getElementById("product-price").innerHTML = productPrice;
+      document.getElementById("product-image").src = productImage
+
+      
+  </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax"></script>
