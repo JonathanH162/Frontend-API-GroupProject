@@ -22,27 +22,27 @@ const productGrid = document.getElementById("product-grid");
                 console.log(buyButtons)
                 buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
                 
-                //hämtar den närmaste parent till knappen som har klassen card
-                const card = button.closest(".card");
-                //spara all info från det klickade kortet 
-                const image = card.querySelector(".card-img-top").src;
-                const title = card.querySelector(".card-title").textContent;
-                const description = card.querySelector(".card-text").textContent;
-                const price = card.querySelector(".card-text.fw-bold").textContent;
-                //spara all info i en sträng, änvander encodeURIComponent() för att få fram specialtecken i strängen
-                const queryString = `title=${encodeURIComponent(title)}
+                    //hämtar den närmaste parent till knappen som har klassen card
+                    const card = button.closest(".card");
+                    //spara all info från det klickade kortet 
+                    const image = card.querySelector(".card-img-top").src;
+                    const title = card.querySelector(".card-title").textContent;
+                    const description = card.querySelector(".card-text").textContent;
+                    const price = card.querySelector(".card-text.fw-bold").textContent;
+                    //spara all info i en sträng, änvander encodeURIComponent() för att få fram specialtecken i strängen
+                    const queryString = `title=${encodeURIComponent(title)}
                         &description=${encodeURIComponent(description)}
                         &price=${encodeURIComponent(price)}
                         &image=${encodeURIComponent(image)}`;
-                //skapa en URL med query stringen
-                const url = `purchase.html?${queryString}`;
-                //öppna nya sida med window.location.href
-                window.location.href = url;
+                    //skapa en URL med query stringen
+                    const url = `purchase.html?${queryString}`;
+                    //öppna nya sida med window.location.href
+                    window.location.href = url;
     
                 });
             })
 
-            });
+        });
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
