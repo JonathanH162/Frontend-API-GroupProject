@@ -6,6 +6,8 @@
     <title>Ecommerce Website - Shopping Cart</title>
     <!-- Link to css (bootstrap)-->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <!-- Box icons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -13,34 +15,32 @@
     <!--Header-->
     <header>
         <!--Nav-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="Startpage.html" title="startpage button">Home</a>
-                </li>
-                <li>
-                  <a class="nav-link" href="catalog.html" title="catalog button">Shop</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about-us.html" title="about us button">About Us</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="contact-form.html" title="contact us button">Contact Us</a>
-                </li>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="#">My Store</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li><a href="Startpage.html" title="start navigation">Home</a></li>
+                <li><a href="catalog.html" title="shop navigation">Shop</a></li>
+                <li><a href="about-us.html" title="about us navigation">About Us</a></li>
+                <li><a href="contact-form.html" title="contact us navigation">Contact Us</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               </ul>
             </div>
-          </nav>
-        <div class="navbar container-sm navbar d-flex jusityfy-content-between align-items.center">
-            <a href="#" class="fs-1 fw-normal link-secondary text-decoration-none">Ecommerce</a>
-            <!--cart icon-->
-            <i class='bx bx-shopping-bag fs-1 btn' id="cart-icon"></i>
-        </div>
-        <hr class="border-3 border-secondary">
+          </div>
+        </nav>
     </header>
+  <hr class="border-3 border-secondary">
 
     <section class="container">
         <h2 class="fs-2 fw-bold text-center"> Shop</h2>
@@ -48,5 +48,9 @@
     </section>
 
     <script src="Javascript.js"></script>
+    <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
