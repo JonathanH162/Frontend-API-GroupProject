@@ -9,6 +9,7 @@
 <body>
 
     <h1>Checkout</h1>
+    <img id ="product-image" src="#" alt="Product image">
     <form >
         <div>
             <label for="product-title">Title</label>
@@ -43,10 +44,12 @@
         const productTitle = urlParams.get('title');
         const productDescription = urlParams.get('description');
         const productPrice = urlParams.get('price');
+        const productImage = urlParams.get('image')
 
         document.getElementById("product-title").value = productTitle;
         document.getElementById("product-description").value = productDescription;
         document.getElementById("product-price").value = productPrice;
+        document.getElementById("product-image").src = productImage
 
         
     </script>
