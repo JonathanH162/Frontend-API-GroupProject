@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Confirmation</title>
+</head>
+<body>
+    
+    <h1 class="text-center">Tack för din beställning!</h1>
+    <h3 class="text-center">Nedan följer en sammanställning av din order:</h3>
+
+    <div class="mb-3 p-5 text-center">
+        <h4 id="info1">Namn:</h4>
+        <h4 id="info2">Telefon:</h4>
+        <h4 id="info3">Email:</h4>
+        <h4 id="info4">Leveransadress:</h4>
+        <h4 id="info5">Vara:</h4>
+
+        <img src="" alt="productImage" id="image">
+
+        <h4 class="p-5" id="tack">Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till </h4>
+    </div>
+    <script>
+
+        const name = sessionStorage.getItem("name")
+        const phone = sessionStorage.getItem("phone")
+        const email = sessionStorage.getItem("email")
+        const address = sessionStorage.getItem("address")
+        const zip = sessionStorage.getItem("zip")
+        const region = sessionStorage.getItem("region")
+
+        const productTitle = sessionStorage.getItem("title")
+        const productImage = sessionStorage.getItem('image')
+
+        document.getElementById("info1").textContent = "Namn: " + name
+        document.getElementById("info2").textContent = "Telefon: " + phone
+        document.getElementById("info3").textContent = "Email: " + email
+        document.getElementById("info4").textContent = "Leveransadress: " + address + " / " + zip + " / " + region
+        document.getElementById("info5").textContent = "Vara: " + productTitle
+        document.getElementById("image").src = productImage
+        document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + email + "!"
+
+        
+    </script>
+    
+</body>
+</html>
