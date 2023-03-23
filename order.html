@@ -11,51 +11,6 @@
 <body>
     <h1 class="text-center">Skapa order</h1>
 
-<<<<<<<<< Temporary merge branch 1
-    <form method="post" action="Confirmation.html" id="contact-form">
-        <!-- namn input -->
-        <div class="mb-3 px-3"> 
-            <label for="nameinput" class="form-label">Namn</label>
-            <input type="name" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
-           
-          </div>
-          <!-- telefon input -->
-          <div class="mb-3 px-3">
-            <label for="phoneInput" class="form-label">Telefon</label>
-            <input type="phone" class="form-control" id="phoneInput" placeholder="123 456 7890" required 
-            pattern="[-()0-9]+" title="Får bara innehålla siffror, bindestreck samt parenteser" maxlength="50">
-        
-          </div>
-          <!-- email input -->
-          <div class="mb-3 px-3">
-            <label for="emailInput" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Fyll i din e-mailadress" required maxlength="50">
-         
-          </div>
-          <!-- adress input -->
-          <div class="mb-3 px-3">
-            <label for="addressInput" class="form-label">Adress</label>
-            <input type="address" class="form-control" id="addressInput" placeholder="Exempelvägen 1" required minlength="4" maxlength="50">
-        
-          </div>
-          <!-- postnummer input -->
-          <div class="mb-3 px-3">
-            <label for="zipInput" class="form-label">Postnummer</label>
-            <input type="zip-code" class="form-control" id="zipInput" placeholder="123 45" required 
-            pattern="[ 0-9]{6}" title="Får bara innehålla siffror och mellanslag samt måste vara 6 tecken långt"> 
-
-          </div>
-          <!-- ort input -->
-          <div class="mb-3 px-3">
-            <label for="regionInput" class="form-label">Ort</label>
-            <input type="region" class="form-control" id="regionInput" placeholder="Exembelby" required minlength="2" maxlength="50">
-          
-          </div>
-          <div class="text-center">
-            <!-- submit knapp -->
-          <button type="submit" class="btn btn-lg btn-primary px-4" onclick="sendToSessionStorage()">Färdigställ order</button>
-  
-=========
     <div class="container">
 
       <div class="row justify-content-center align-items-center" style="height:100vh">
@@ -64,7 +19,6 @@
 
           <img id ="product-image" src="#" alt="Product image" class="img-fluid mb-3" style="width: 70%;">
 
->>>>>>>>> Temporary merge branch 2
         </div>
         <!--productinfo-->
         <div class="col-md-6">
@@ -171,36 +125,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax"></script>
-    <script>
-      
-      const form = document.getElementById("contact-form")
-      const name = document.getElementById("nameInput")
-      const phone = document.getElementById("phoneInput")
-      const email = document.getElementById("emailInput")
-      const address = document.getElementById("addressInput")
-      const zip = document.getElementById("zipInput")
-      const region = document.getElementById("regionInput")
-
-      form.addEventListener("submit", function(e){
-        e.preventDefault;
-
-        const nameValue = name.value
-        const phoneValue = phone.value
-        const emailValue = email.value
-        const addressValue = address.value
-        const zipValue = zip.value
-        const regionValue = region.value
-
-        sessionStorage.setItem("name", nameValue)
-        sessionStorage.setItem("phone", phoneValue)
-        sessionStorage.setItem("email", emailValue)
-        sessionStorage.setItem("address", addressValue)
-        sessionStorage.setItem("zip", zipValue)
-        sessionStorage.setItem("region", regionValue)
-        
-      })
-
-    </script>
     
 
 </body>
