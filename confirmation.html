@@ -19,7 +19,7 @@
         <h4 id="info4">Leveransadress:</h4>
         <h4 id="info5">Vara:</h4>
 
-        <img src="" alt="productImage" id="image">
+        <img src="" alt="productImage" id="image" height="200px" width="200px">
 
         <h4 class="p-5" id="tack">Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till </h4>
     </div>
@@ -32,8 +32,9 @@
         const zip = sessionStorage.getItem("zip")
         const region = sessionStorage.getItem("region")
 
-        const productTitle = sessionStorage.getItem("title")
-        const productImage = sessionStorage.getItem('image')
+        const urlParams = new URLSearchParams(window.location.search);
+        const productTitle = urlParams.get('title');
+        const productImage = urlParams.get('image')
 
         document.getElementById("info1").textContent = "Namn: " + name
         document.getElementById("info2").textContent = "Telefon: " + phone
