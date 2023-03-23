@@ -117,6 +117,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax"></script>
+    <script>
+      
+      const form = document.getElementById("contact-form")
+      const name = document.getElementById("nameInput")
+      const phone = document.getElementById("phoneInput")
+      const email = document.getElementById("emailInput")
+      const address = document.getElementById("addressInput")
+      const zip = document.getElementById("zipInput")
+      const region = document.getElementById("regionInput")
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault;
+
+        const nameValue = name.value
+        const phoneValue = phone.value
+        const emailValue = email.value
+        const addressValue = address.value
+        const zipValue = zip.value
+        const regionValue = region.value
+
+        sessionStorage.setItem("name", nameValue)
+        sessionStorage.setItem("phone", phoneValue)
+        sessionStorage.setItem("email", emailValue)
+        sessionStorage.setItem("address", addressValue)
+        sessionStorage.setItem("zip", zipValue)
+        sessionStorage.setItem("region", regionValue)
+        
+      })
+
+    </script>
     
 
 </body>
