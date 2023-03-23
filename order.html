@@ -73,11 +73,11 @@
           <h3 class="mb-3" id="product-price"></h3>
         </div>
     
-        <form action="#" id="contact-form">
+        <form action="confirmation.html" id="contact-form">
             <!-- namn input -->
             <div class="mb-3 px-3"> 
                 <label for="nameinput" class="form-label">Namn</label>
-                <input type="name" class="form-control" id="nameinput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
+                <input type="name" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
                
               </div>
               <!-- telefon input -->
@@ -115,51 +115,59 @@
               <div class="text-center">
                 <!-- submit knapp -->
             
-              <button type="submit" class="btn btn-lg btn-primary px-4" onclick="transInfo()">Färdigställ order</button>
+              <button type="submit" class="btn btn-lg btn-primary px-4">Färdigställ order</button>
               
             </div>
         </form>
       </div>
 
     </div>
+
+<script>
+      
+  const form = document.getElementById("contact-form")
+  const name = document.getElementById("nameInput")
+  const phone = document.getElementById("phoneInput")
+  const email = document.getElementById("emailInput")
+  const address = document.getElementById("addressInput")
+  const zip = document.getElementById("zipInput")
+  const region = document.getElementById("regionInput")
+
+  const urlParams = new URLSearchParams(location.search);
+  const productTitle = urlParams.get('title');
+  const productImage = urlParams.get('image');
+
+  document.getElementById("product-title").innerHTML = productTitle;
+  document.getElementById("product-image").src = productImage;
+
+  
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault;
+
+    const nameValue = name.value
+    const phoneValue = phone.value
+    const emailValue = email.value
+    const addressValue = address.value
+    const zipValue = zip.value
+    const regionValue = region.value
+    const titleElement = document.getElementById("product-title").textContent;
+    const imgElement = document.getElementById("product-image").src;
+
+    sessionStorage.setItem("name", nameValue)
+    sessionStorage.setItem("phone", phoneValue)
+    sessionStorage.setItem("email", emailValue)
+    sessionStorage.setItem("address", addressValue)
+    sessionStorage.setItem("zip", zipValue)
+    sessionStorage.setItem("region", regionValue)
+    sessionStorage.setItem("title", titleElement)
+    sessionStorage.setItem("image", imgElement)
+
     
+    
+  })
 
-    <script>
-      const urlParams = new URLSearchParams(location.search);
-      const productTitle = urlParams.get('title');
-      const productDescription = urlParams.get('description');
-      const productPrice = urlParams.get('price');
-      const productImage = urlParams.get('image');
-
-      document.getElementById("product-title").innerHTML = productTitle;
-      document.getElementById("product-description").innerHTML = productDescription;
-      document.getElementById("product-price").innerHTML = productPrice;
-      document.getElementById("product-image").src = productImage;
-
-      function transInfo(){
-      
-      //Hämtar referens till element som innehåller produktinfo
-      const titleElement = document.getElementById("product-title").textContent;
-      const descriptionElement = document.getElementById("product-description").textContent;
-      const priceElement = document.getElementById("product-price").textContent;
-      const imgElement = document.getElementById("product-image").src;
-      //sparar produktinfo
-      const title = titleElement.textContent;
-      const description = descriptionElement.textContent;
-      const price = priceElement.textContent;
-      const image = imgElement.src
-        console.log(titleElement)
-        console.log(descriptionElement)
-        console.log(priceElement)
-        console.log(imgElement)
-      //const url = "test.html?title=" + encodeURIComponent(title) + "&description=" + encodeURIComponent(description) + "&price=" + encodeURIComponent(price);
-
-      //console.log(url)
-
-      //location.href = url;
-      }
-      
-  </script>
+</script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax"></script>
