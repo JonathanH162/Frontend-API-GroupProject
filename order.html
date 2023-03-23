@@ -27,11 +27,11 @@
           <h3 class="mb-3" id="product-price"></h3>
         </div>
     
-        <form action="#" id="contact-form">
+        <form method="post" action="Confirmation.html" id="contact-form">
             <!-- namn input -->
             <div class="mb-3 px-3"> 
                 <label for="nameinput" class="form-label">Namn</label>
-                <input type="name" class="form-control" id="nameinput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
+                <input type="name" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
                
               </div>
               <!-- telefon input -->
@@ -69,7 +69,7 @@
               <div class="text-center">
                 <!-- submit knapp -->
             
-              <a href="#" type="submit" class="btn btn-lg btn-primary px-4" onclick="transInfo()">Färdigställ order</a>
+              <a href="#" type="submit" class="btn btn-lg btn-primary px-4" onclick="transInfo()sendToSessionStorage()">Färdigställ order</a>
               
             </div>
         </form>
