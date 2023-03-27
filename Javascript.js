@@ -51,42 +51,42 @@ const productGrid = document.getElementById("product-grid");
 
         // Index - JS
 
-        const menuBtn = document.querySelector(".menu-btn");
-        const navigation = document.querySelector(".navigation");
+  const menuBtn = document.querySelector(".menu-btn");
+  const navigation = document.querySelector(".navigation");
 
-        menuBtn.addEventListener("click", () => {
-            menuBtn.classList.toggle("active");
-            navigation.classList.toggle("active");
-        });
+  menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("active");
+      navigation.classList.toggle("active");
+  });
 
-        //js for vid slider nav
-        const btns = document.querySelectorAll(".nav-btn");
-        const slides = document.querySelectorAll(".video-slide");
-        const contents = document.querySelectorAll(".content");
+  //js for vid slider nav
+  const btns = document.querySelectorAll(".nav-btn");
+  const slides = document.querySelectorAll(".video-slide");
+  const contents = document.querySelectorAll(".content");
 
-        var sliderNav = function (manual) {
-            btns.forEach((btn) => {
-                btn.classList.remove("active");
-            });
+  var sliderNav = function (manual) {
+      btns.forEach((btn) => {
+          btn.classList.remove("active");
+      });
 
-            slides.forEach((slide) => {
-                slide.classList.remove("active");
-            });
+      slides.forEach((slide) => {
+          slide.classList.remove("active");
+      });
 
-            contents.forEach((content) => {
-                content.classList.remove("active");
-            });
+      contents.forEach((content) => {
+          content.classList.remove("active");
+      });
 
-            btns[manual].classList.add("active");
-            slides[manual].classList.add("active");
-            contents[manual].classList.add("active");
-        }
+      btns[manual].classList.add("active");
+      slides[manual].classList.add("active");
+      contents[manual].classList.add("active");
+  }
 
-        btns.forEach((btn, i) => {
-            btn.addEventListener("click", () => {
-                sliderNav(i);
-            });
-        });
+  btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+          sliderNav(i);
+      });
+  });
 
 //Order - JS
   const form = document.getElementById("contact-form")
