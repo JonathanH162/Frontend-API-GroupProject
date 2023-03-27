@@ -46,6 +46,8 @@ const productGrid = document.getElementById("product-grid");
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
+
+        
         
           
 

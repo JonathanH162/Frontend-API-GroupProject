@@ -25,23 +25,14 @@
     </div>
     <script>
 
-        const name = sessionStorage.getItem("name")
-        const phone = sessionStorage.getItem("phone")
-        const email = sessionStorage.getItem("email")
-        const address = sessionStorage.getItem("address")
-        const zip = sessionStorage.getItem("zip")
-        const region = sessionStorage.getItem("region")
-
-        const productTitle = sessionStorage.getItem("title")
-        const productImage = sessionStorage.getItem('image')
-
-        document.getElementById("info1").textContent = "Namn: " + name
-        document.getElementById("info2").textContent = "Telefon: " + phone
-        document.getElementById("info3").textContent = "Email: " + email
-        document.getElementById("info4").textContent = "Leveransadress: " + address + " / " + zip + " / " + region
-        document.getElementById("info5").textContent = "Vara: " + productTitle
-        document.getElementById("image").src = productImage
-        document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + email + "!"
+        document.getElementById("info1").textContent = "Namn: " + sessionStorage.getItem("name")
+        document.getElementById("info2").textContent = "Telefon: " + sessionStorage.getItem("phone")
+        document.getElementById("info3").textContent = "Email: " + sessionStorage.getItem("email")
+        document.getElementById("info4").textContent = "Leveransadress: " + sessionStorage.getItem("address") +
+         " / " + sessionStorage.getItem("zip") + " / " + sessionStorage.getItem("region")
+        document.getElementById("info5").textContent = "Vara: " + sessionStorage.getItem("title")
+        document.getElementById("image").src = sessionStorage.getItem('image')
+        document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
 
         
     </script>
