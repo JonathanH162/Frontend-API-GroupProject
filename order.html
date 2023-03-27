@@ -80,45 +80,24 @@
 <script>
       
   const form = document.getElementById("contact-form")
-  const name = document.getElementById("nameInput")
-  const phone = document.getElementById("phoneInput")
-  const email = document.getElementById("emailInput")
-  const address = document.getElementById("addressInput")
-  const zip = document.getElementById("zipInput")
-  const region = document.getElementById("regionInput")
+  const urlParams = new URLSearchParams(location.search)
 
-  const urlParams = new URLSearchParams(location.search);
-  const productTitle = urlParams.get('title');
-  const productImage = urlParams.get('image');
-
-  document.getElementById("product-title").innerHTML = productTitle;
-  document.getElementById("product-image").src = productImage;
-
-  
+  document.getElementById("product-title").innerHTML = urlParams.get('title')
+  document.getElementById("product-image").src = urlParams.get('image')
+  document.getElementById("product-price").innerHTML = urlParams.get('price')
+  document.getElementById("product-description").innerHTML = urlParams.get('description')
 
   form.addEventListener("submit", function(e){
     e.preventDefault;
 
-    const nameValue = name.value
-    const phoneValue = phone.value
-    const emailValue = email.value
-    const addressValue = address.value
-    const zipValue = zip.value
-    const regionValue = region.value
-    const titleElement = document.getElementById("product-title").textContent;
-    const imgElement = document.getElementById("product-image").src;
-
-    sessionStorage.setItem("name", nameValue)
-    sessionStorage.setItem("phone", phoneValue)
-    sessionStorage.setItem("email", emailValue)
-    sessionStorage.setItem("address", addressValue)
-    sessionStorage.setItem("zip", zipValue)
-    sessionStorage.setItem("region", regionValue)
-    sessionStorage.setItem("title", titleElement)
-    sessionStorage.setItem("image", imgElement)
-
-    
-    
+    sessionStorage.setItem("name", document.getElementById("nameInput").value)
+    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
+    sessionStorage.setItem("email", document.getElementById("emailInput").value)
+    sessionStorage.setItem("address", document.getElementById("addressInput").value)
+    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
+    sessionStorage.setItem("region", document.getElementById("regionInput").value)
+    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+    sessionStorage.setItem("image", document.getElementById("product-image").src)
   })
 
 </script>
