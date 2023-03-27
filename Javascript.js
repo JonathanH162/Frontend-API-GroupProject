@@ -49,8 +49,9 @@ const productGrid = document.getElementById("product-grid");
             console.error("Error fetching products:", error);
         });
 
-        // Index - JS
+// Index - JS
 
+function index() {
   const menuBtn = document.querySelector(".menu-btn");
   const navigation = document.querySelector(".navigation");
 
@@ -87,8 +88,10 @@ const productGrid = document.getElementById("product-grid");
           sliderNav(i);
       });
   });
+}
 
 //Order - JS
+function order() {
   const form = document.getElementById("contact-form")
   const urlParams = new URLSearchParams(location.search)
 
@@ -99,7 +102,7 @@ const productGrid = document.getElementById("product-grid");
 
   form.addEventListener("submit", function(e){
     e.preventDefault;
-
+  
     sessionStorage.setItem("name", document.getElementById("nameInput").value)
     sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
     sessionStorage.setItem("email", document.getElementById("emailInput").value)
@@ -108,20 +111,23 @@ const productGrid = document.getElementById("product-grid");
     sessionStorage.setItem("region", document.getElementById("regionInput").value)
     sessionStorage.setItem("title", document.getElementById("product-title").textContent)
     sessionStorage.setItem("image", document.getElementById("product-image").src)
-  })
+    })
+}
+  
+
 
 //Confirmation - JS  
 
-  function confirmation() {
-    document.getElementById("info1").textContent = "Namn: " + sessionStorage.getItem("name")
-    document.getElementById("info2").textContent = "Telefon: " + sessionStorage.getItem("phone")
-    document.getElementById("info3").textContent = "Email: " + sessionStorage.getItem("email")
-    document.getElementById("info4").textContent = "Leveransadress: " + sessionStorage.getItem("address") +
-    " / " + sessionStorage.getItem("zip") + " / " + sessionStorage.getItem("region")
-    document.getElementById("info5").textContent = "Vara: " + sessionStorage.getItem("title")
-    document.getElementById("image").src = sessionStorage.getItem('image')
-    document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
-  }
+function confirmation() {
+  document.getElementById("info1").textContent = "Namn: " + sessionStorage.getItem("name")
+  document.getElementById("info2").textContent = "Telefon: " + sessionStorage.getItem("phone")
+  document.getElementById("info3").textContent = "Email: " + sessionStorage.getItem("email")
+  document.getElementById("info4").textContent = "Leveransadress: " + sessionStorage.getItem("address") +
+  " / " + sessionStorage.getItem("zip") + " / " + sessionStorage.getItem("region")
+  document.getElementById("info5").textContent = "Vara: " + sessionStorage.getItem("title")
+  document.getElementById("image").src = sessionStorage.getItem('image')
+  document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
+}
   
   
 
