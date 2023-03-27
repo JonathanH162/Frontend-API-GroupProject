@@ -77,31 +77,8 @@
 
     </div>
 
-<script>
-      
-  const form = document.getElementById("contact-form")
-  const urlParams = new URLSearchParams(location.search)
+<script src="Javascript.js"></script>
 
-  document.getElementById("product-title").innerHTML = urlParams.get('title')
-  document.getElementById("product-image").src = urlParams.get('image')
-  document.getElementById("product-price").innerHTML = urlParams.get('price')
-  document.getElementById("product-description").innerHTML = urlParams.get('description')
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault;
-
-    sessionStorage.setItem("name", document.getElementById("nameInput").value)
-    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
-    sessionStorage.setItem("email", document.getElementById("emailInput").value)
-    sessionStorage.setItem("address", document.getElementById("addressInput").value)
-    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
-    sessionStorage.setItem("region", document.getElementById("regionInput").value)
-    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-    sessionStorage.setItem("image", document.getElementById("product-image").src)
-  })
-
-</script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </body>
 </html>

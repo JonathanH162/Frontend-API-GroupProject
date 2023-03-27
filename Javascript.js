@@ -1,3 +1,5 @@
+//Catalog - JS
+
 const productGrid = document.getElementById("product-grid");
 
         fetch("Fakestore.json")
@@ -46,10 +48,82 @@ const productGrid = document.getElementById("product-grid");
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
-        
-          
 
+        // Index - JS
 
+        const menuBtn = document.querySelector(".menu-btn");
+        const navigation = document.querySelector(".navigation");
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            navigation.classList.toggle("active");
+        });
+
+        //js for vid slider nav
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".video-slide");
+        const contents = document.querySelectorAll(".content");
+
+        var sliderNav = function (manual) {
+            btns.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+
+            contents.forEach((content) => {
+                content.classList.remove("active");
+            });
+
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+            contents[manual].classList.add("active");
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+
+//Order - JS
+  const form = document.getElementById("contact-form")
+  const urlParams = new URLSearchParams(location.search)
+
+  document.getElementById("product-title").innerHTML = urlParams.get('title')
+  document.getElementById("product-image").src = urlParams.get('image')
+  document.getElementById("product-price").innerHTML = urlParams.get('price')
+  document.getElementById("product-description").innerHTML = urlParams.get('description')
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault;
+
+    sessionStorage.setItem("name", document.getElementById("nameInput").value)
+    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
+    sessionStorage.setItem("email", document.getElementById("emailInput").value)
+    sessionStorage.setItem("address", document.getElementById("addressInput").value)
+    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
+    sessionStorage.setItem("region", document.getElementById("regionInput").value)
+    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+    sessionStorage.setItem("image", document.getElementById("product-image").src)
+  })
+
+//Confirmation - JS  
+
+  function confirmation() {
+    document.getElementById("info1").textContent = "Namn: " + sessionStorage.getItem("name")
+    document.getElementById("info2").textContent = "Telefon: " + sessionStorage.getItem("phone")
+    document.getElementById("info3").textContent = "Email: " + sessionStorage.getItem("email")
+    document.getElementById("info4").textContent = "Leveransadress: " + sessionStorage.getItem("address") +
+    " / " + sessionStorage.getItem("zip") + " / " + sessionStorage.getItem("region")
+    document.getElementById("info5").textContent = "Vara: " + sessionStorage.getItem("title")
+    document.getElementById("image").src = sessionStorage.getItem('image')
+    document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
+  }
+  
+  
 
 
         
