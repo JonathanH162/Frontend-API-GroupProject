@@ -28,7 +28,7 @@ const productGrid = document.getElementById("product-grid");
         });
 
         const buyButtons = document.querySelectorAll(".btn-success");
-        //console.log(buyButtons)
+        console.log(buyButtons)
         buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
         const card = button.closest(".card");
         const product = {
