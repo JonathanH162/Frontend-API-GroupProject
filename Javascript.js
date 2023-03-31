@@ -13,16 +13,16 @@ function catalog(){
                 <div class="card h-100">
                   <img id="product-image" src="${product.image}" class="card-img-top" alt="${product.title}">
                   <div class="card-body">
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-text fw-bold">$${product.price}</p>
-                    <a href="order.html" class="btn btn-success" >BUY</a>
+                    <h5 id="title" class="card-title">${product.title}</h5>
+                    <p id="description" class="card-text">${product.description}</p>
+                    <p id="price" class="card-text fw-bold">$${product.price}</p>
+                    <a href="#" class="btn btn-success" >BUY</a>
                   </div>
                 </div>`;
                 productGrid.appendChild(div);
 
               
-                  const buyButtons = document.querySelectorAll(".btn-success");
+                 const buyButtons = document.querySelectorAll(".btn-success");
                   console.log(buyButtons)
                   buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
                   const card = button.closest(".card");
@@ -40,13 +40,17 @@ function catalog(){
                 });
       
                 })
-              
 
             });
-        }).catch(error => {
+          
+           
+          })
+        .catch(error => {
             console.error("Error fetching products:", error);
         });
 }
+
+
 
 // Index - JS
 
@@ -91,19 +95,16 @@ function index() {
 
 //Order - JS
 function order() {
+  const form = document.getElementById("contact-form")
   const product = JSON.parse(sessionStorage.getItem("product"));
+  console.log(product)
 
   document.getElementById("product-title").innerHTML = product.title;
   document.getElementById("product-image").src = product.image;
   document.getElementById("product-price").innerHTML = product.price;
   document.getElementById("product-description").innerHTML = product.description;
 
- 
- 
-      sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-      sessionStorage.setItem("image", document.getElementById("product-image").src)
-  
-      form.addEventListener("submit", function(e){
+  form.addEventListener("submit", function(e){
         e.preventDefault;
           sessionStorage.setItem("name", document.getElementById("nameInput").value)
           sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
@@ -111,6 +112,8 @@ function order() {
           sessionStorage.setItem("address", document.getElementById("addressInput").value)
           sessionStorage.setItem("zip", document.getElementById("zipInput").value)
           sessionStorage.setItem("region", document.getElementById("regionInput").value)
+          sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+          sessionStorage.setItem("image", document.getElementById("product-image").src)
     
       })
 }
