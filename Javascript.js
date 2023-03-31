@@ -15,39 +15,35 @@ const productGrid = document.getElementById("product-grid");
                     <h5 class="card-title">${product.title}</h5>
                     <p class="card-text">${product.description}</p>
                     <p class="card-text fw-bold">$${product.price}</p>
-                    <a href="#" class="btn btn-success" >BUY</a>
+                    <a href="order.html" class="btn btn-success" >BUY</a>
                   </div>
                 </div>`;
                 productGrid.appendChild(div);
 
-                const buyButtons = document.querySelectorAll(".btn-success");
-                //console.log(buyButtons)
-                buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
-                
-                //hämtar den närmaste parent till knappen som har klassen card
-                const card = button.closest(".card");
-                //spara all info från det klickade kortet 
-                const image = card.querySelector(".card-img-top").src;
-                const title = card.querySelector(".card-title").textContent;
-                const description = card.querySelector(".card-text").textContent;
-                const price = card.querySelector(".card-text.fw-bold").textContent;
-                //spara all info i en sträng, änvander encodeURIComponent() för att få fram specialtecken i strängen
-                const queryString = `title=${encodeURIComponent(title)}
-                        &description=${encodeURIComponent(description)}
-                        &price=${encodeURIComponent(price)}
-                        &image=${encodeURIComponent(image)}`;
-                //skapa en URL med query stringen
-                const url = `order.html?${queryString}`;
-                //öppna nya sida med window.location.href
-                location.href = url;
-    
-                });
-            })
+              
 
             });
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
+
+        const buyButtons = document.querySelectorAll(".btn-success");
+        //console.log(buyButtons)
+        buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
+        const card = button.closest(".card");
+        const product = {
+          image: card.querySelector(".card-img-top").src,
+          title: card.querySelector(".card-title").textContent,
+          description: card.querySelector(".card-text").textContent,
+          price: card.querySelector(".card-text.fw-bold").textContent
+        };
+
+        sessionStorage.setItem("product", JSON.stringify(product));
+        location.href = "order.html";        
+
+
+        });
+    })
 
 // Index - JS
 
@@ -92,13 +88,12 @@ function index() {
 
 //Order - JS
 function order() {
-  const form = document.getElementById("contact-form")
-  const urlParams = new URLSearchParams(location.search)
+  const product = JSON.parse(sessionStorage.getItem("product"));
 
-  document.getElementById("product-title").innerHTML = urlParams.get('title')
-  document.getElementById("product-image").src = urlParams.get('image')
-  document.getElementById("product-price").innerHTML = urlParams.get('price')
-  document.getElementById("product-description").innerHTML = urlParams.get('description')
+  document.getElementById("product-title").innerHTML = product.title;
+  document.getElementById("product-image").src = product.image;
+  document.getElementById("product-price").innerHTML = product.price;
+  document.getElementById("product-description").innerHTML = product.description;
 
   form.addEventListener("submit", function(e){
     e.preventDefault;
