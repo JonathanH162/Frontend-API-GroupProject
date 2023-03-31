@@ -1,6 +1,7 @@
 //Catalog - JS
 
-const productGrid = document.getElementById("product-grid");
+function catalog(){
+  const productGrid = document.getElementById("product-grid");
 
         fetch("Fakestore.json")
           .then(response => response.json())
@@ -21,29 +22,31 @@ const productGrid = document.getElementById("product-grid");
                 productGrid.appendChild(div);
 
               
+                  const buyButtons = document.querySelectorAll(".btn-success");
+                  console.log(buyButtons)
+                  buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
+                  const card = button.closest(".card");
+                  const product = {
+                  image: card.querySelector(".card-img-top").src,
+                  title: card.querySelector(".card-title").textContent,
+                  description: card.querySelector(".card-text").textContent,
+                  price: card.querySelector(".card-text.fw-bold").textContent
+                  };
+      
+                sessionStorage.setItem("product", JSON.stringify(product));
+                location.href = "order.html";        
+        
+        
+                });
+      
+                })
+              
 
             });
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
-
-        const buyButtons = document.querySelectorAll(".btn-success");
-        console.log(buyButtons)
-        buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
-        const card = button.closest(".card");
-        const product = {
-          image: card.querySelector(".card-img-top").src,
-          title: card.querySelector(".card-title").textContent,
-          description: card.querySelector(".card-text").textContent,
-          price: card.querySelector(".card-text.fw-bold").textContent
-        };
-
-        sessionStorage.setItem("product", JSON.stringify(product));
-        location.href = "order.html";        
-
-
-        });
-    })
+}
 
 // Index - JS
 
@@ -95,18 +98,21 @@ function order() {
   document.getElementById("product-price").innerHTML = product.price;
   document.getElementById("product-description").innerHTML = product.description;
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault;
+ 
+ 
+      sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+      sessionStorage.setItem("image", document.getElementById("product-image").src)
   
-    sessionStorage.setItem("name", document.getElementById("nameInput").value)
-    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
-    sessionStorage.setItem("email", document.getElementById("emailInput").value)
-    sessionStorage.setItem("address", document.getElementById("addressInput").value)
-    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
-    sessionStorage.setItem("region", document.getElementById("regionInput").value)
-    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-    sessionStorage.setItem("image", document.getElementById("product-image").src)
-    })
+      form.addEventListener("submit", function(e){
+        e.preventDefault;
+          sessionStorage.setItem("name", document.getElementById("nameInput").value)
+          sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
+          sessionStorage.setItem("email", document.getElementById("emailInput").value)
+          sessionStorage.setItem("address", document.getElementById("addressInput").value)
+          sessionStorage.setItem("zip", document.getElementById("zipInput").value)
+          sessionStorage.setItem("region", document.getElementById("regionInput").value)
+    
+      })
 }
   
 
