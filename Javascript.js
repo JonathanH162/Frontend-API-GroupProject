@@ -1,6 +1,8 @@
 //Catalog - JS
 
-const productGrid = document.getElementById("product-grid");
+function catalog() {
+
+  const productGrid = document.getElementById("product-grid");
 
         fetch("Fakestore.json")
           .then(response => response.json())
@@ -10,12 +12,12 @@ const productGrid = document.getElementById("product-grid");
               div.classList.add("col-sm-4");
               div.innerHTML = `
                 <div class="card h-100">
-                  <img id="product-image" src="${product.image}" class="card-img-top" alt="${product.title}">
+                  <img id="product-image" src="${product.image}" class="card-img-top img-fluid" alt="${product.title}">
                   <div class="card-body">
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
+                    <h5 class="card-title"><strong>${product.title}</strong></h5>
+                    <p class="card-text ">${product.description}</p> 
                     <p class="card-text fw-bold">$${product.price}</p>
-                    <a href="#" class="btn btn-success" >BUY</a>
+                    <a href="#" class="btn btn-success " >BUY</a>
                   </div>
                 </div>`;
                 productGrid.appendChild(div);
@@ -48,6 +50,7 @@ const productGrid = document.getElementById("product-grid");
         }).catch(error => {
             console.error("Error fetching products:", error);
         });
+}
 
 // Index - JS
 

@@ -7,8 +7,35 @@
     <title>Order</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body onload="order()">
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">My Store</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="catalog.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about-us.html">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact-form.html">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
     <h1 class="text-center">Skapa order</h1>
 
     <div class="container">
@@ -17,7 +44,7 @@
         <!--productimage-->
         <div class="col-md-6">
 
-          <img id ="product-image" src="#" alt="Product image" class="img-fluid mb-3 img-fluid">
+          <img id ="product-image" src="#" alt="Product image" class="mb-3 img-fluid h-75 w-75">
 
         </div>
         <!--productinfo-->
@@ -78,7 +105,7 @@
     </div>
 
 <script src="Javascript.js"></script>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
