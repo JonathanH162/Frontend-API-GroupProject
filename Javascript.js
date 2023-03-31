@@ -21,25 +21,21 @@ function catalog(){
                 </div>`;
                 productGrid.appendChild(div);
 
-              
-                 const buyButtons = document.querySelectorAll(".btn-success");
-                  console.log(buyButtons)
-                  buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
-                  const card = button.closest(".card");
-                  const product = {
-                  image: card.querySelector(".card-img-top").src,
-                  title: card.querySelector(".card-title").textContent,
-                  description: card.querySelector(".card-text").textContent,
-                  price: card.querySelector(".card-text.fw-bold").textContent
+                productGrid.addEventListener("click", (event) => {
+                  if (event.target.classList.contains("btn-success")) {
+                    event.preventDefault();
+                    const card = event.target.closest(".card");
+                    const product = {
+                      image: card.querySelector(".card-img-top").src,
+                      title: card.querySelector(".card-title").textContent,
+                      description: card.querySelector(".card-text").textContent,
+                      price: card.querySelector(".card-text.fw-bold").textContent
                   };
       
                 sessionStorage.setItem("product", JSON.stringify(product));
-                location.href = "order.html";        
-        
-        
-                });
-      
-                })
+                location.href = "order.html";  
+                  }
+              });
 
             });
           
@@ -97,7 +93,6 @@ function index() {
 function order() {
   const form = document.getElementById("contact-form")
   const product = JSON.parse(sessionStorage.getItem("product"));
-  console.log(product)
 
   document.getElementById("product-title").innerHTML = product.title;
   document.getElementById("product-image").src = product.image;
