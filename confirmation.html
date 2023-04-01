@@ -3,11 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Confirmation</title>
 </head>
 <body onload="confirmation()">
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">My Store</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="catalog.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about-us.html">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact-form.html">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
     
     <h1 class="text-center">Tack för din beställning!</h1>
     <h3 class="text-center">Nedan följer en sammanställning av din order:</h3>
@@ -19,10 +46,14 @@
         <h4 id="info4">Leveransadress:</h4>
         <h4 id="info5">Vara:</h4>
 
-        <img src="#" alt="productImage" id="image">
+        <img class=" img-fluid mb-3" src="#" alt="productImage" id="image">
 
         <h4 class="p-5" id="tack">Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till </h4>
     </div>
+
     <script src="Javascript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
