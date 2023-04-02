@@ -127,6 +127,92 @@ function confirmation() {
   document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
 }
   
+
+// back to top button
+var backToTopBtn = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", function() {
+  if (window.pageYOffset > 500) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+});
+
+backToTopBtn.addEventListener("click", function() {
+  window.scrollTo(0, 0);
+});
+
+//Lp, fetch product-list
+
+fetch('Fakestore.json')
+  .then(response => response.json())
+  .then(data => {
+    const products = data.slice(0, 10); // get the first 10 products
+    const product1 = document.getElementById('product1');
+    const product2 = document.getElementById('product2');
+    const product3 = document.getElementById('product3');
+    const product4 = document.getElementById('product4');
+    const product5 = document.getElementById('product5');
+    const product6 = document.getElementById('product6');
+    const product7 = document.getElementById('product7');
+    const product8 = document.getElementById('product8');
+    const product9 = document.getElementById('product9');
+    const product10 = document.getElementById('product10');
+    products.forEach(product => {
+      const productElement = document.createElement('div');
+      productElement.innerHTML = `
+        <div>
+          <img id="product-image" src="${product.image}" class="product-thumb" alt="${product.title}">
+          <div>
+            <h5 class="product-title">${product.title}</h5>
+            <p class= "product-price">$${product.price}</p>
+            <a href="#" class="card-btn">BUY</a>
+          </div>
+        </div>`;
+      if (product.id === 1) {
+        product1.appendChild(productElement);
+      } else if (product.id === 2) {
+        product2.appendChild(productElement);
+      } else if (product.id === 3) {
+        product3.appendChild(productElement);
+      } else if (product.id === 4) {
+        product4.appendChild(productElement);
+      } else if (product.id === 5) {
+        product5.appendChild(productElement);
+      } else if (product.id === 6) {
+        product6.appendChild(productElement);
+      } else if (product.id === 7) {
+        product7.appendChild(productElement);
+      } else if (product.id === 8) {
+        product8.appendChild(productElement);
+      } else if (product.id === 9) {
+        product9.appendChild(productElement);
+      } else if (product.id === 10) {
+        product10.appendChild(productElement);
+      } 
+    });
+  });
+
+  // slider function 
+
+  const productContainers = [...document.querySelectorAll('.product-slider-container')];
+  const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+  const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+  productContainers.forEach((item, i) =>{
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+      item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+      item.scrollLeft -= containerWidth;
+    })
+    
+  })
   
 
 
