@@ -22,27 +22,32 @@ function catalog() {
                 </div>`;
                 productGrid.appendChild(div);
 
-                productGrid.addEventListener("click", (event) => {
-                  if (event.target.classList.contains("btn-success")) {
-                    event.preventDefault();
-                    const card = event.target.closest(".card");
-                    const product = {
-                      image: card.querySelector(".card-img-top").src,
-                      title: card.querySelector(".card-title").textContent,
-                      description: card.querySelector(".card-text").textContent,
-                      price: card.querySelector(".card-text.fw-bold").textContent
-                  };
-      
-                sessionStorage.setItem("product", JSON.stringify(product));
-                location.href = "order.html";  
-                  }
-              });
+                const buyButtons = document.querySelectorAll(".btn-success");
+                //console.log(buyButtons)
+                buyButtons.forEach((button) => {button.addEventListener("click", (event)=> {event.preventDefault(); //förhindra sidan laddas om när användaren klickar på länken
+                
+                //hämtar den närmaste parent till knappen som har klassen card
+                const card = button.closest(".card");
+                //spara all info från det klickade kortet 
+                const image = card.querySelector(".card-img-top").src;
+                const title = card.querySelector(".card-title").textContent;
+                const description = card.querySelector(".card-text").textContent;
+                const price = card.querySelector(".card-text.fw-bold").textContent;
+                //spara all info i en sträng, änvander encodeURIComponent() för att få fram specialtecken i strängen
+                const queryString = `title=${encodeURIComponent(title)}
+                        &description=${encodeURIComponent(description)}
+                        &price=${encodeURIComponent(price)}
+                        &image=${encodeURIComponent(image)}`;
+                //skapa en URL med query stringen
+                const url = `order.html?${queryString}`;
+                //öppna nya sida med window.location.href
+                location.href = url;
+    
+                });
+            })
 
             });
-          
-           
-          })
-        .catch(error => {
+        }).catch(error => {
             console.error("Error fetching products:", error);
         });
 }
@@ -86,118 +91,30 @@ function index() {
           sliderNav(i);
       });
   });
-
-  // back to top button
-var backToTopBtn = document.getElementById("back-to-top");
-
-window.addEventListener("scroll", function() {
-  if (window.pageYOffset > 500) {
-    backToTopBtn.style.display = "block";
-  } else {
-    backToTopBtn.style.display = "none";
-  }
-});
-
-backToTopBtn.addEventListener("click", function() {
-  window.scrollTo(0, 0);
-});
-
-//Lp, fetch product-list
-
-fetch('Fakestore.json')
-  .then(response => response.json())
-  .then(data => {
-    const products = data.slice(0, 10); // get the first 10 products
-    const product1 = document.getElementById('product1');
-    const product2 = document.getElementById('product2');
-    const product3 = document.getElementById('product3');
-    const product4 = document.getElementById('product4');
-    const product5 = document.getElementById('product5');
-    const product6 = document.getElementById('product6');
-    const product7 = document.getElementById('product7');
-    const product8 = document.getElementById('product8');
-    const product9 = document.getElementById('product9');
-    const product10 = document.getElementById('product10');
-    products.forEach(product => {
-      const productElement = document.createElement('div');
-      productElement.innerHTML = `
-        <div>
-          <img id="product-image" src="${product.image}" class="product-thumb" alt="${product.title}">
-          <div>
-            <h5 class="product-title">${product.title}</h5>
-            <p class= "product-price">$${product.price}</p>
-            <a href="#" class="card-btn">BUY</a>
-          </div>
-        </div>`;
-      if (product.id === 1) {
-        product1.appendChild(productElement);
-      } else if (product.id === 2) {
-        product2.appendChild(productElement);
-      } else if (product.id === 3) {
-        product3.appendChild(productElement);
-      } else if (product.id === 4) {
-        product4.appendChild(productElement);
-      } else if (product.id === 5) {
-        product5.appendChild(productElement);
-      } else if (product.id === 6) {
-        product6.appendChild(productElement);
-      } else if (product.id === 7) {
-        product7.appendChild(productElement);
-      } else if (product.id === 8) {
-        product8.appendChild(productElement);
-      } else if (product.id === 9) {
-        product9.appendChild(productElement);
-      } else if (product.id === 10) {
-        product10.appendChild(productElement);
-      } 
-    });
-  });
-
-  // slider function 
-
-  const productContainers = [...document.querySelectorAll('.product-slider-container')];
-  const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-  const preBtn = [...document.querySelectorAll('.pre-btn')];
-
-  productContainers.forEach((item, i) =>{
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
-
-    nxtBtn[i].addEventListener('click', () => {
-      item.scrollLeft += containerWidth;
-    })
-
-    preBtn[i].addEventListener('click', () => {
-      item.scrollLeft -= containerWidth;
-    })
-    
-  })
-
-
 }
 
 //Order - JS
 function order() {
   const form = document.getElementById("contact-form")
-  const product = JSON.parse(sessionStorage.getItem("product"));
+  const urlParams = new URLSearchParams(location.search)
 
-  document.getElementById("product-title").innerHTML = product.title;
-  document.getElementById("product-image").src = product.image;
-  document.getElementById("product-price").innerHTML = product.price;
-  document.getElementById("product-description").innerHTML = product.description;
+  document.getElementById("product-title").innerHTML = urlParams.get('title')
+  document.getElementById("product-image").src = urlParams.get('image')
+  document.getElementById("product-price").innerHTML = urlParams.get('price')
+  document.getElementById("product-description").innerHTML = urlParams.get('description')
 
   form.addEventListener("submit", function(e){
-        e.preventDefault;
-          sessionStorage.setItem("name", document.getElementById("nameInput").value)
-          sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
-          sessionStorage.setItem("email", document.getElementById("emailInput").value)
-          sessionStorage.setItem("address", document.getElementById("addressInput").value)
-          sessionStorage.setItem("zip", document.getElementById("zipInput").value)
-          sessionStorage.setItem("region", document.getElementById("regionInput").value)
-          sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-          sessionStorage.setItem("image", document.getElementById("product-image").src)
-    
-      })
+    e.preventDefault;
+  
+    sessionStorage.setItem("name", document.getElementById("nameInput").value)
+    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
+    sessionStorage.setItem("email", document.getElementById("emailInput").value)
+    sessionStorage.setItem("address", document.getElementById("addressInput").value)
+    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
+    sessionStorage.setItem("region", document.getElementById("regionInput").value)
+    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+    sessionStorage.setItem("image", document.getElementById("product-image").src)
+    })
 }
   
 
@@ -215,8 +132,6 @@ function confirmation() {
   document.getElementById("tack").textContent = "Tack för att du handlat hos oss, en kopia av bekräftelsen har skickats till " + sessionStorage.getItem("email") + "!"
 }
   
-
-
   
 
 
