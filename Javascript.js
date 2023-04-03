@@ -178,6 +178,10 @@ fetch('Fakestore.json')
 
 //Order - JS
 function order() {
+
+
+
+  
   const form = document.getElementById("contact-form")
   const product = JSON.parse(sessionStorage.getItem("product"));
 

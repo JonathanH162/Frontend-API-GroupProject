@@ -58,39 +58,43 @@
             <!-- namn input -->
             <div class="mb-3 px-3"> 
                 <label for="nameInput" class="form-label">Namn</label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
+                <input type="text" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn">
+                <span id="name-error">Name is required</span> 
                
               </div>
               <!-- telefon input -->
               <div class="mb-3 px-3">
                 <label for="phoneInput" class="form-label">Telefon</label>
-                <input type="tel" class="form-control" id="phoneInput" placeholder="123 456 7890" required 
-                pattern="[-()0-9]+" title="Får bara innehålla siffror, bindestreck samt parenteser" maxlength="50">
+                <input type="tel" class="form-control" id="phoneInput" placeholder="123 456 7890">
+                <span id="phone-error">Phone is required</span> 
             
               </div>
               <!-- email input -->
               <div class="mb-3 px-3">
                 <label for="emailInput" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Fyll i din e-mailadress" required maxlength="50">
+                <input type="email" class="form-control" id="emailInput" placeholder="Fyll i din e-mailadress">
+                <span id="email-error">Email is required</span> 
              
               </div>
               <!-- adress input -->
               <div class="mb-3 px-3">
                 <label for="addressInput" class="form-label">Adress</label>
-                <input type="text" class="form-control" id="addressInput" placeholder="Exempelvägen 1" required minlength="4" maxlength="50">
+                <input type="text" class="form-control" id="addressInput" placeholder="Exempelvägen 1">
+                <span id="address-error">Address is required</span> 
             
               </div>
               <!-- postnummer input -->
               <div class="mb-3 px-3">
                 <label for="zipInput" class="form-label">Postnummer</label>
-                <input type="text" class="form-control" id="zipInput" placeholder="123 45" required 
-                pattern="[ 0-9]{6}" title="Får bara innehålla siffror och mellanslag samt måste vara 6 tecken långt"> 
+                <input type="text" class="form-control" id="zipInput" placeholder="123 45">
+                <span id="zip-error">zip is required</span>  
     
               </div>
               <!-- ort input -->
               <div class="mb-3 px-3">
                 <label for="regionInput" class="form-label">Ort</label>
-                <input type="text" class="form-control" id="regionInput" placeholder="Exembelby" required minlength="2" maxlength="50">
+                <input type="text" class="form-control" id="regionInput" placeholder="Exembelby">
+                <span id="region-error">Region is required</span> 
               
               </div>
               <div class="text-center">
