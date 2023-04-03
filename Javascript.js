@@ -174,8 +174,6 @@ fetch('Fakestore.json')
   })
 
 
-
-
 }
 
 //Order - JS
