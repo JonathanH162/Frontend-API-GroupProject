@@ -177,7 +177,94 @@ fetch('Fakestore.json')
 }
 
 //Order - JS
+
+
+let nameValidation = false
+let phoneValidation = false
+let emailValidation = false
+let addressValidation = false
+let zipValidation = false
+let regionValidation = false
+
+function validateName() {
+  const nameInput = document.getElementById("nameInput").value
+  if (nameInput.length < 2 || nameInput.length > 50 || nameInput.length == 0) {
+    document.getElementById("name-error").innerHTML = "Namnet får inte vara kortare än 2 eller längre än 50 bokstäver!"
+    nameValidation = false
+  }
+  else {
+    document.getElementById("name-error").innerHTML = ""
+    nameValidation = true
+  }
+}
+function validatePhone() {
+  const phoneInput = document.getElementById("phoneInput").value
+  if (!phoneInput.match(/^[0-9-()]/) || phoneInput.length > 50 || phoneInput.length == 0) {
+    document.getElementById("phone-error").innerHTML = "Telefonnumret får inte vara längre än 50 bokstäver samt får bara innehålla siffror, bindestreck och parenteser!"
+    phoneValidation = false
+  }
+  else {
+    document.getElementById("phone-error").innerHTML = ""
+    phoneValidation = true
+  }
+}
+function validateEmail() {
+  const emailInput = document.getElementById("emailInput").value
+  if (!emailInput.includes("@") || emailInput.length > 50 || emailInput.length == 0) {
+    document.getElementById("email-error").innerHTML = "Email-adressen måste innehålla ett @ och får inte vara längre än 50 bokstäver!"
+    emailValidation = false
+  }
+  else {
+    document.getElementById("email-error").innerHTML = ""
+    emailValidation = true
+  }
+}
+function validateAddress() {
+  const addressInput = document.getElementById("addressInput").value
+  if (addressInput.length < 2 || addressInput.length > 50 || addressInput.length == 0) {
+    document.getElementById("address-error").innerHTML = "Adressen får inte vara kortare än 2 eller längre än 50 bokstäver!"
+    addressValidation = false
+  }
+  else {
+    document.getElementById("address-error").innerHTML = ""
+    addressValidation = true
+  }
+}
+function validateZip() {
+  const zipInput = document.getElementById("zipInput").value
+  if (!zipInput.match(/^[0-9]*\s{1}[0-9]{2}/) || zipInput.length == 0) {
+    document.getElementById("zip-error").innerHTML = "Postnumret får bara bestå av siffror och måste innehålla ett mellanslag samt vara 6 tecken långt"
+    zipValidation = false
+  }
+  else {
+    document.getElementById("zip-error").innerHTML = ""
+    zipValidation = true
+  }
+}
+function validateRegion() {
+  const regionInput = document.getElementById("regionInput").value
+  if (regionInput.length < 2 || regionInput.length > 50 || regionInput.length == 0) {
+    document.getElementById("region-error").innerHTML = "Orten får inte vara kortare än 2 eller längre än 50 bokstäver!"
+    regionValidation = false
+  } 
+  else {
+    document.getElementById("region-error").innerHTML = ""
+    regionValidation = true
+  }
+}
+
+function validateAll() {
+
+  if(nameValidation == true && phoneValidation == true && emailValidation == true && addressValidation == true && zipValidation == true && regionValidation == true) {
+    document.getElementById("submitButton").type = "submit"
+  }
+  else {
+    document.getElementById("submit-error").innerHTML = "Åtgärda fel i dokumentet ovan!"
+  }
+}
+
 function order() {
+
   const form = document.getElementById("contact-form")
   const product = JSON.parse(sessionStorage.getItem("product"));
 
@@ -187,17 +274,19 @@ function order() {
   document.getElementById("product-description").innerHTML = product.description;
 
   form.addEventListener("submit", function(e){
-        e.preventDefault;
-          sessionStorage.setItem("name", document.getElementById("nameInput").value)
-          sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
-          sessionStorage.setItem("email", document.getElementById("emailInput").value)
-          sessionStorage.setItem("address", document.getElementById("addressInput").value)
-          sessionStorage.setItem("zip", document.getElementById("zipInput").value)
-          sessionStorage.setItem("region", document.getElementById("regionInput").value)
-          sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-          sessionStorage.setItem("image", document.getElementById("product-image").src)
-    
-      })
+    e.preventDefault;
+
+    sessionStorage.clear
+    sessionStorage.setItem("name", document.getElementById("nameInput").value)
+    sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
+    sessionStorage.setItem("email", document.getElementById("emailInput").value)
+    sessionStorage.setItem("address", document.getElementById("addressInput").value)
+    sessionStorage.setItem("zip", document.getElementById("zipInput").value)
+    sessionStorage.setItem("region", document.getElementById("regionInput").value)
+    sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+    sessionStorage.setItem("image", document.getElementById("product-image").src)
+    }
+  )
 }
   
 

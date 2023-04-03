@@ -7,7 +7,6 @@
     <title>Order</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body onload="order()">
 
@@ -58,45 +57,50 @@
             <!-- namn input -->
             <div class="mb-3 px-3"> 
                 <label for="nameInput" class="form-label">Namn</label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Fyll i ditt för och efternamn" required minlength="2" maxlength="50"> 
+                <input type="text" class="form-control" id="nameInput" placeholder=" Exempel Exempelson" onkeyup="validateName()">
+                <span id="name-error" class="text-danger"></span> 
                
               </div>
               <!-- telefon input -->
               <div class="mb-3 px-3">
                 <label for="phoneInput" class="form-label">Telefon</label>
-                <input type="tel" class="form-control" id="phoneInput" placeholder="123 456 7890" required 
-                pattern="[-()0-9]+" title="Får bara innehålla siffror, bindestreck samt parenteser" maxlength="50">
+                <input type="tel" class="form-control" id="phoneInput" placeholder="123 456 7890" onkeyup="validatePhone()">
+                <span id="phone-error" class="text-danger"></span> 
             
               </div>
               <!-- email input -->
               <div class="mb-3 px-3">
                 <label for="emailInput" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Fyll i din e-mailadress" required maxlength="50">
+                <input type="email" class="form-control" id="emailInput" placeholder="Exempel@gmail.com" onkeyup="validateEmail()">
+                <span id="email-error" class="text-danger"></span> 
              
               </div>
               <!-- adress input -->
               <div class="mb-3 px-3">
                 <label for="addressInput" class="form-label">Adress</label>
-                <input type="text" class="form-control" id="addressInput" placeholder="Exempelvägen 1" required minlength="4" maxlength="50">
+                <input type="text" class="form-control" id="addressInput" placeholder="Exempelvägen 1" onkeyup="validateAddress()">
+                <span id="address-error" class="text-danger"></span> 
             
               </div>
               <!-- postnummer input -->
               <div class="mb-3 px-3">
                 <label for="zipInput" class="form-label">Postnummer</label>
-                <input type="text" class="form-control" id="zipInput" placeholder="123 45" required 
-                pattern="[ 0-9]{6}" title="Får bara innehålla siffror och mellanslag samt måste vara 6 tecken långt"> 
+                <input type="text" class="form-control" id="zipInput" placeholder="123 45" onkeyup="validateZip()">
+                <span id="zip-error" class="text-danger"></span>  
     
               </div>
               <!-- ort input -->
               <div class="mb-3 px-3">
                 <label for="regionInput" class="form-label">Ort</label>
-                <input type="text" class="form-control" id="regionInput" placeholder="Exembelby" required minlength="2" maxlength="50">
+                <input type="text" class="form-control" id="regionInput" placeholder="Exempelby" onkeyup="validateRegion()">
+                <span id="region-error" class="text-danger"></span> 
               
               </div>
               <div class="text-center">
                 <!-- submit knapp -->
             
-              <button type="submit" class="btn btn-lg btn-primary px-4">Färdigställ order</button>
+              <button type="button" id="submitButton" class="btn btn-lg btn-primary px-4" onclick="validateAll()">Färdigställ Order</button>
+              <span id="submit-error" class="text-danger"></span>
               
             </div>
         </form>
@@ -105,9 +109,7 @@
     </div>
 
 <script src="Javascript.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 
 </body>
