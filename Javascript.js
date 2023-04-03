@@ -180,7 +180,14 @@ fetch('Fakestore.json')
 function order() {
 
 
-
+  const nameInput = document.getElementById("nameInput").value
+  const phoneInput = document.getElementById("phoneInput").value
+  const emailInput = document.getElementById("emailInput").value
+  const addressInput = document.getElementById("addressInput").value
+  const zipInput = document.getElementById("zipInput").value
+  const regionInput = document.getElementById("regionInput").value
+  const validationArray = []
+  
   
   const form = document.getElementById("contact-form")
   const product = JSON.parse(sessionStorage.getItem("product"));
@@ -192,14 +199,35 @@ function order() {
 
   form.addEventListener("submit", function(e){
         e.preventDefault;
-          sessionStorage.setItem("name", document.getElementById("nameInput").value)
-          sessionStorage.setItem("phone", document.getElementById("phoneInput").value)
-          sessionStorage.setItem("email", document.getElementById("emailInput").value)
-          sessionStorage.setItem("address", document.getElementById("addressInput").value)
-          sessionStorage.setItem("zip", document.getElementById("zipInput").value)
-          sessionStorage.setItem("region", document.getElementById("regionInput").value)
-          sessionStorage.setItem("title", document.getElementById("product-title").textContent)
-          sessionStorage.setItem("image", document.getElementById("product-image").src)
+
+        if (nameInput.length < 2 | nameInput.length > 50 | nameInput.length == 0) {
+          document.getElementById("name-error").innerHTML = "Namnet får inte vara kortare än 2 eller längre än 50 bokstäver!"
+        }
+        else {
+          validationArray.push(true)
+        }
+        if (!phoneInput.match(/^[0-9][-()]/) | phoneInput.length > 50 | phoneInput.length == 0) {
+          document.getElementById("phone-error").innerHTML = "Telefonnumret får inte vara längre än 50 bokstäver samt får bara innehålla siffror, bindestreck och parenteser!"
+        }
+        else {
+          validationArray.push(true)
+        }
+        if (emailInput | emailInput.length > 50 | nameInput.length == 0) {
+          document.getElementById("name-error").innerHTML = "Namnet får inte vara kortare än 2 eller längre än 50 bokstäver!"
+        }
+        else {
+          validationArray.push(true)
+        }
+
+
+        sessionStorage.setItem("name", nameInput)
+        sessionStorage.setItem("phone", phoneInput)
+        sessionStorage.setItem("email", emailInput)
+        sessionStorage.setItem("address", addressInput)
+        sessionStorage.setItem("zip", zipInput)
+        sessionStorage.setItem("region", regionInput)
+        sessionStorage.setItem("title", document.getElementById("product-title").textContent)
+        sessionStorage.setItem("image", document.getElementById("product-image").src)
     
       })
 }
