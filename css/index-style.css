@@ -666,6 +666,14 @@
     width: 50%;
     margin-bottom: 30px;
     }
+
+    @media (max-width: 390px){
+      .home .content h1{
+        font-size: 3em;
+        line-height: 60px;
+      }
+
+    }
   
     }
 
